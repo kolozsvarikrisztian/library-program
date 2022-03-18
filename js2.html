@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p id="kimenet"></p>
+    <script>
+        // let text="";
+        // let i = 1;
+        // while (i < 10){
+        //     text += "Az i értéke most: " + i + "<br>";
+        //     i++;
+        //     console.log(i);
+        // }
+        // document.getElementById("kimenet").innerHTML = text;
+        
+        // let text="";
+        // for(let i=0; i<5; i++){
+        //     text += "Az i értéke most: " + i + "<br>";
+        //     console.log(i);
+        // }
+        // document.getElementById("kimenet").innerHTML = text;
+
+        // let cars = ["Audi","Opel","Rover","SAAB","Ford","Mazda"];
+        // text = "";
+        // text += cars[0] + "<br>";
+        // text += cars[1] + "<br>";
+        // text += cars[2] + "<br>";
+        // text += cars[3] + "<br>";
+        // text += cars[4] + "<br>";
+        // text += cars[5] + "<br>";
+        // document.getElementById("kimenet").innerHTML = text + "<br><br>";
+
+        // let i;
+        // let textCiklus = "";
+        // for(i = 0; i < cars.length; i++){
+        //     textCiklus += cars[i] + "<br>";
+        // }
+        // document.getElementById("kimenet").innerHTML = text + "<br><br>"+ textCiklus;
+
+        // let cars = ["Audi","Opel","Rover","SAAB","Ford","Mazda"];
+        // let text = "";
+
+        // for(let x of cars){
+        //     text += x + "<br>";
+        // }
+        // document.getElementById("kimenet").innerHTML = text;
+
+        let person = {"knev":"John", "vnev":"Doe", kor:25};
+        let text = "";
+        for (x in person){
+            text += person[x] + " "
+            text += x + ":" + person[x] + "<br>"
+        }
+        document.getElementById("kimenet").innerHTML = text;
+    </script>
+    
+</body>
+</html>

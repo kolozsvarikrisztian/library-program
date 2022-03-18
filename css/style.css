@@ -1,0 +1,102 @@
+#kategoria {
+    background-color: #fff8dc;
+    color: #8b4513;  
+    padding: 0 0 10px 0;  
+    /*width: calc(25% - 30px);*/
+    -webkit-box-shadow: 1px 4px 9px 0px rgba(0,0,0,0.73); 
+    box-shadow: 1px 4px 9px 0px rgba(0,0,0,0.73);
+}
+
+#kategoria div {
+    padding-left: 15px;
+}
+#kategoria div input{
+    margin-bottom: 15px;;
+}
+
+#tartalom {
+    padding-left: 5px;  
+    width: calc(75% - 5px);
+}
+
+#tartalom div {
+    padding: 0px 15px;
+}
+
+header span, header h1, header h2 {
+    display: inline;
+}
+
+header span img, a span img {
+    width: 25px;
+    position: relative;
+    top: 3px;
+}
+
+a span img {
+    top: 7px;
+    margin-right: 10px;
+}
+
+table {
+    border-collapse: collapse;
+}
+
+table tr:not(#reszletes table tr), table th:not(#reszletes table th), table td:not(#reszletes table td) {
+    padding: 10px;
+    border: 1px solid grey;
+}
+
+table th:not(#reszletes table th) {
+    background-color: #ffa07a;
+}
+
+table tr:nth-child(2n+1):not(#reszletes table tr:nth-child(2n+1)) {
+    background: #faf0ea;
+}
+
+#reszletes table tr, #reszletes table th, #reszletes table td{
+    padding: 10px;
+}
+
+#reszletes table th {
+    text-align: left;
+}
+
+header {
+    background-color: #b22222;
+    color: #fff;
+    padding: 5px;
+    border: 1px solid #ffa500;
+}
+
+#konyvkep img{
+    max-width: 100%;
+}
+
+.rejtett div, .rejtett header {
+    display: none;
+}
+
+.rejtett {
+    height: 300px;
+    border: 1px solid #c0c0c0;    
+}
+
+#megse {
+    display: none;
+}
+
+@media only screen and (max-width: 768px) {
+    
+    #tartalom {
+        padding-left: 0px;  
+        width: 100%;
+        padding-top: 10px;
+    }
+    
+    #tartalom div {
+       overflow-y: auto;
+       height: 300px;
+    }
+}
