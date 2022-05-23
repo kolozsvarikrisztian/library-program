@@ -1,3 +1,9 @@
+<?
+    include_once('php/Application.php');
+
+    new Application();
+?>
+
 <!DOCTYPE html>
 <html lang="hu">
 <head>
