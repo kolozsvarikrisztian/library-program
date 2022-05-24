@@ -1,7 +1,11 @@
 <?
-    include_once('php/Application.php');
+    // include_once('php/Application.php');
+    include_once('php/Books.php');
+    // new Application();
 
-    new Application();
+    $books = new Books();
+
+    // debug('Itt vagyok!!')
 ?>
 
 <!DOCTYPE html>
@@ -48,6 +52,7 @@
                 <input type="search" name="search"  class="m-b-20">
                 <button id="kereso">Keresés</button>
                 <button id="megse">Mégse</button>
+                <? debug($books->getBooks()) ?>        
                 <table>
                     <tr>
                         <th>Cím</th>

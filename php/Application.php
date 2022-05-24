@@ -1,5 +1,7 @@
 <?php 
 
+include_once('debug.php');
+
 class Application{
 
     private $dbParams = array(
@@ -24,6 +26,29 @@ class Application{
             die('Connection failed: '.$this->connection->Conncent_error);
         }
         $this->connectionLive = true;
+    }
+
+    protected function isDbConnectionLive(){
+        return $this->connectionLive;
+    }
+
+    protected function getResultList($sql){
+        $resultList = array();
+        $result = $this->connection->query($sql);
+
+        if ($result->num_rows > 0){
+            while($row = $result->fetch_assoc()){
+                $resultList[] = $row;
+            }
+        }
+        else{
+            $this->writeLog("nem talált értéket a legkérdezés", $sql);
+        }
+        return $resultList;
+    }
+
+    protected function writeLog($string, $sql){
+
     }
 }
 
