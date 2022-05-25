@@ -52,53 +52,21 @@
                 <input type="search" name="search"  class="m-b-20">
                 <button id="kereso">Keresés</button>
                 <button id="megse">Mégse</button>
-                <? debug($books->getBooks()) ?>        
+                       
                 <table>
                     <tr>
                         <th>Cím</th>
                         <th>Szerző</th>
                         <th>Kategória</th>
                     </tr>
-                    <tr>
-                        <td>A Gyűrűk Ura</td>
-                        <td>J.R.R. Tolkien</td>
-                        <td>Fantasy, Regény</td>
+                    <? foreach ($books->getBooks() as $key=> $book){ ?>
+                        <tr>
+                        <td> <?= $book['title'] ?></td>
+                        <td> <?= $book['author'] ?></td>
+                        <td> <?= $book['category'] ?></td>
                     </tr>
-                    <tr>
-                        <td>A Titok</td>
-                        <td>Rhonda Brain</td>
-                        <td>Motivációs</td>
-                    </tr>
-                    <tr>
-                        <td>A Gyűrűk Ura</td>
-                        <td>J.R.R. Tolkien</td>
-                        <td>Fantasy, Regény</td>
-                    </tr>
-                    <tr>
-                        <td>A Titok</td>
-                        <td>Rhonda Brain</td>
-                        <td>Motivációs</td>
-                    </tr>
-                    <tr>
-                        <td>A Gyűrűk Ura</td>
-                        <td>J.R.R. Tolkien</td>
-                        <td>Fantasy, Regény</td>
-                    </tr>
-                    <tr>
-                        <td>A Titok</td>
-                        <td>Rhonda Brain</td>
-                        <td>Motivációs</td>
-                    </tr>
-                    <tr>
-                        <td>A Gyűrűk Ura</td>
-                        <td>J.R.R. Tolkien</td>
-                        <td>Fantasy, Regény</td>
-                    </tr>
-                    <tr>
-                        <td>A Titok</td>
-                        <td>Rhonda Brain</td>
-                        <td>Motivációs</td>
-                    </tr>
+                    <? } 
+                    ?> 
                 </table>
             </div>
         </div>
