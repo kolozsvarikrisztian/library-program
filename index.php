@@ -2,12 +2,11 @@
     // include_once('php/Application.php');
     include_once('php/Books.php');
     include_once('php/Categories.php');
-    // new Application();
 
+    // new Application();
     $books = new Books();
     $categories = new Categories();
-
-    // debug('Itt vagyok!!');
+   
 ?>
 
 <!DOCTYPE html>
@@ -37,8 +36,13 @@
                 <span class="f-right"><img id="panel-zaro" src="img/arrow_left.png" alt="összecsuk" title="összecsuk"></span>
             </header>
             <div id="kategoriak">
-                <? foreach ($categories->getCategories() as $key=> $category){ ?>
-                <input type="checkbox" name="<?= $category['name'] ?>" id="<?= $category['name'] ?>" data-szoveg="<?= $category['name'] ?>"><label for="<?= $category['name'] ?>" id="<?= $category['name'].'_lbl' ?>"><?= $category['name'] ?></label><br> <? } ?>
+            <? 
+                foreach ($categories->getCategories() as $key => $category){ ?>                        
+                    <input type="checkbox" name="<?= $category['name'] ?>" id="<?= $category['name'] ?>" data-szoveg="<?= $category['name'] ?>"><label for="<?= $category['name'] ?>" id="<?= $category['name'].'_lbl' ?>" onclick="location.href='kategoria.php?cat=<?= $category['id'] ?>'">
+                    <?= $category['name'] ?>
+                    </label><br>
+                <?php } ?>
+                
                 
                 <hr>
                 <a href="admin/login.html"><span><img src="img/login.png" alt="belépés" title="belépés"></span>Belépés</a>
@@ -54,21 +58,24 @@
                 <input type="search" name="search"  class="m-b-20">
                 <button id="kereso">Keresés</button>
                 <button id="megse">Mégse</button>
-                       
+        
                 <table>
                     <tr>
                         <th>Cím</th>
                         <th>Szerző</th>
                         <th>Kategória</th>
                     </tr>
-                    <? foreach ($books->getBooks() as $key=> $book){ ?>
-                        <tr>
-                        <td> <?= $book['title'] ?></td>
-                        <td> <?= $book['author'] ?></td>
-                        <td> <?= $book['category'] ?></td>
-                    </tr>
-                    <? } 
-                    ?> 
+                    <? 
+                        foreach ($books->getBooks() as $key => $book){ ?>
+                            <tr>
+                                <td> <?= $book['title']   ?></td>
+                                <td> <?= $book['author']   ?></td>
+                                <td> <?= $book['category']   ?></td>
+                            </tr>
+                    <?    }
+                    
+                    ?>
+                    
                 </table>
             </div>
         </div>

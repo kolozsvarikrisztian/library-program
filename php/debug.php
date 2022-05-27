@@ -1,5 +1,4 @@
 <?
-
 function debug($array, $level=1) {
     if(!is_array($array)) {
         echo gettype($array) . '(' . $array . ')';
@@ -23,5 +22,7 @@ function debug($array, $level=1) {
         echo "$prefix }<br>";
     }
 }
+
+
 
 ?>

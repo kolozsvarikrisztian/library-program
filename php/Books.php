@@ -2,42 +2,51 @@
 
 include_once('Application.php');
 
-class Books extends Application{
-    
+class Books extends Application {
     private $sql = array(
         'allBooks' => 'SELECT
-        books.title,
-        authors.name AS author,
-        GROUP_CONCAT(categories.name SEPARATOR ", ") AS category
-      FROM books
-        LEFT JOIN authors 
-          ON books.author_id = authors.id
-        LEFT JOIN books_categories 
-          ON books_categories.book_id = books.id
-        LEFT JOIN categories
-          ON books_categories.id = categories.id
-      GROUP BY books.title'
+                        b.title, a.name AS author, GROUP_CONCAT(c.name SEPARATOR ", ") AS category
+                    FROM books b
+                        LEFT JOIN authors a ON b.author_id = a.id
+                        LEFT JOIN books_categories bc ON bc.book_id = b.id
+                        LEFT JOIN categories c ON bc.category_id = c.id
+                    GROUP BY b.title;',
+        'booksByCategory' => 'SELECT
+                        b.title, a.name AS author, GROUP_CONCAT(c.name SEPARATOR ", ") AS category
+                    FROM books b
+                        LEFT JOIN authors a ON b.author_id = a.id
+                        LEFT JOIN books_categories bc ON bc.book_id = b.id
+                        LEFT JOIN categories c ON bc.category_id = c.id
+                    WHERE c.id = {id}
+                    GROUP BY b.title;'
     );
-    
     public function __construct()
     {
-        
-
         parent::__construct();
         // if($this->isDbConnectionLive()){
-        //     echo "Az adatbázis kapcsolat él.";
+        //     echo "db kapcsolat él";
+        // }else{
+        //     echo "db kapcsolat nem él";
         // }
-        // else{
-        //     echo "Az adatbázis kapcsolat nem él.";
-        // }
-
         // debug($this->getResultList("select * from books"));
     }
 
-    public function getBooks(){
+    public function getBooks() {
         $books = $this->getResultList($this->sql['allBooks']);
         return $books;
     }
+
+    public function getBooksByCategory($categoryId) {
+        if (!$this->isValidId($categoryId)){
+            return array();
+        }
+        $params = array(
+            '{id}' => $categoryId
+        );
+        $books = $this->getResultList(strtr($this->sql['booksByCategory'],$params));
+        return $books;
+    }
 }
+
 
 ?>
