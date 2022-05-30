@@ -8,7 +8,7 @@ switch ($_GET['t']){
         $res = $books->delete($_GET['id']);
 
         if (!$res){
-            echo 'hiba!'
+            echo 'hiba!';
         }
 
         break;
