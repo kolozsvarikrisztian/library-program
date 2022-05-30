@@ -1,3 +1,7 @@
+<?
+    include_once('../php/Books.php');
+    $books = new Books();
+?>
 <!DOCTYPE html>
 <html lang="hu">
 <head>
@@ -10,6 +14,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../css/responsive.css">
     <link rel="stylesheet" href="../css/admin.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="../js/admin_script.js"></script>
 </head>
 <body>
     <header>
@@ -86,28 +92,20 @@
                     <th>Kategória</th>
                     <th>Funkciók</th>
                 </tr>
-                <tr>
-                    <td>A Gyűrűk Ura</td>
-                    <td>1800</td>
-                    <td>angol</td>
-                    <td>J.R.R. Tolkien</td>
-                    <td>Fantasy, Regény</td>
+                
+                    <? foreach ($books -> getBooks() as $key => $book) { ?>
+                    <tr>
+                    <td><?=$book['title'] ?></td>
+                    <td><?=$book['page_size'] ?></td>
+                    <td><?=$book['lang'] ?></td>
+                    <td><?=$book['author'] ?></td>
+                    <td><?=$book['category'] ?></td>
                     <td class="functions">
-                        <a href="#"><img src="../img/edit.png" alt="módosítás" title="módosítás"></a>
-                        <a href="#"><img src="../img/delete.png" alt="törlés" title="törlés"></a>
+                        <a href="konyvek_form.php?book=<?=$book['id'] ?>"><img src="../img/edit.png" alt="módosítás" title="módosítás"></a>
+                        <a href="#" class="delete_rec" table="books" rec_id="<?=$book['id'] ?>"><img src="../img/delete.png" alt="törlés" title="törlés"></a>
                     </td>
-                </tr>
-                <tr>
-                    <td>A Titok</td>
-                    <td>203</td>
-                    <td>magyar</td>
-                    <td>Rhonda Brain</td>
-                    <td>Motivációs</td>
-                    <td class="functions">
-                        <a href="#"><img src="../img/edit.png" alt="módosítás" title="módosítás"></a>
-                        <a href="#"><img src="../img/delete.png" alt="törlés" title="törlés"></a>
-                    </td>
-                </tr>
+                    </tr>
+                    <? } ?>
             </table>
         </div>
     </main>

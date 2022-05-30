@@ -7,6 +7,7 @@
     $books = new Books();
     $categories = new Categories();
    
+    $books -> writeLog("első log bejegyzésünk");
 ?>
 
 <!DOCTYPE html>
@@ -68,7 +69,7 @@
                     <? 
                         foreach ($books->getBooks() as $key => $book){ ?>
                             <tr>
-                                <td> <?= $book['title']   ?></td>
+                                <td> <a href="detail.php?book=<?= $book['id']?>"><?= $book['title']?></a></td>
                                 <td> <?= $book['author']   ?></td>
                                 <td> <?= $book['category']   ?></td>
                             </tr>
