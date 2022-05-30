@@ -67,11 +67,13 @@ class Books extends Application {
         return $book;
     }
 
-    public function delete(){
-        if (!$this->isValidId($id)){
+    public function delete($id)
+    {
+        if (!$this->isValidId($id))
+        {
             return false;
         }
-        $res = $this -> deleteRecordById("books",  $id);
+        $res = $this->deleteRecordById("books", $id);
         return $res;
     }
 }
