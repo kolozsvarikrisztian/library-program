@@ -1,6 +1,11 @@
 <?
     include_once('../php/Books.php');
     $books = new Books();
+    include_once('../php/Authors.php');
+    $authors = new Authors();
+    include_once('../php/Categories.php');
+    $categories = new Categories();
+
 ?>
 <!DOCTYPE html>
 <html lang="hu">
@@ -26,63 +31,47 @@
         <div class="col-12">
             <div class="col-6">
                 <h2>Szerzők listája</h2>
-                <button type="button" onclick="location.href='szerzo_form.html'">Új szerző</button>
+                <button type="button" onclick="location.href='szerzo_form.php'">Új szerző</button>
                 <table>
                     <tr>
                         <th>Név</th>
                         <th>Funkciók</th>
                     </tr>
+                    <? foreach ($authors -> getAuthors() as $key => $author) { ?>
                     <tr>
-                        <td>J.R.R. Tolkien</td>
-                        <td class="functions">
-                            <a href="#"><img src="../img/edit.png" alt="módosítás" title="módosítás"></a>
-                            <a href="#"><img src="../img/delete.png" alt="törlés" title="törlés"></a>
-                        </td>
+                    <td><?=$author['name'] ?></td>
+                    <td class="functions">
+                        <a href="szerzo_form.php?author=<?=$author['id'] ?>"><img src="../img/edit.png" alt="módosítás" title="módosítás"></a>
+                        <a href="#" class="delete_rec" table="authors" rec_id="<?=$author['id'] ?>"><img src="../img/delete.png" alt="törlés" title="törlés"></a>
+                    </td>
                     </tr>
-                    <tr>
-                        <td>Rhonda Brain</td>
-                        <td class="functions">
-                            <a href="#"><img src="../img/edit.png" alt="módosítás" title="módosítás"></a>
-                            <a href="#"><img src="../img/delete.png" alt="törlés" title="törlés"></a>
-                        </td>
-                    </tr>
+                    <? } ?>
                 </table>
             </div>
             <div class="col-6">
                 <h2>Kategóriák listája</h2>
-                <button type="button" onclick="location.href='kategoria_form.html'">Új kategória</button>
+                <button type="button" onclick="location.href='kategoria_form.php'">Új kategória</button>
                 <table>
                     <tr>
                         <th>Név</th>
                         <th>Funkciók</th>
                     </tr>
-                    <tr>
-                        <td>Fantasy</td>
-                        <td class="functions">
-                            <a href="#"><img src="../img/edit.png" alt="módosítás" title="módosítás"></a>
-                            <a href="#"><img src="../img/delete.png" alt="törlés" title="törlés"></a>
-                        </td>
                     </tr>
+                    <? foreach ($categories -> getCategories() as $key => $category) { ?>
                     <tr>
-                        <td>Motivációs</td>
-                        <td class="functions">
-                            <a href="#"><img src="../img/edit.png" alt="módosítás" title="módosítás"></a>
-                            <a href="#"><img src="../img/delete.png" alt="törlés" title="törlés"></a>
-                        </td>
+                    <td><?=$category['name'] ?></td>
+                    <td class="functions">
+                        <a href="kategoria_form.php?category=<?=$category['id'] ?>"><img src="../img/edit.png" alt="módosítás" title="módosítás"></a>
+                        <a href="#" class="delete_rec" table="categories" rec_id="<?=$category['id'] ?>"><img src="../img/delete.png" alt="törlés" title="törlés"></a>
+                    </td>
                     </tr>
-                    <tr>
-                        <td>Regény</td>
-                        <td class="functions">
-                            <a href="#"><img src="../img/edit.png" alt="módosítás" title="módosítás"></a>
-                            <a href="#"><img src="../img/delete.png" alt="törlés" title="törlés"></a>
-                        </td>
-                    </tr>
+                    <? } ?>
                 </table>
             </div>
         </div>
         <div class="col-12">
             <h2>Könyvek listája</h2>
-            <button type="button" onclick="location.href='konyvek_form.html'">Új könyv</button>
+            <button type="button" onclick="location.href='konyvek_form.php'">Új könyv</button>
             <table>
                 <tr>
                     <th>Cím</th>
