@@ -5,7 +5,7 @@ $(document).ready(function(){
             let table = $(this).attr("table");
             let id = $(this).attr("rec_id");
 
-            location.href = "delete.php?t=" + table + "&id=" + id;
+            location.href = "../php/delete.php?t=" + table + "&id=" + id;
         }
     });
 });
